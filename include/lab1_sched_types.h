@@ -19,23 +19,23 @@
 
 /* Process structure*/
 typedef struct {
-    char p_name;    // process name 
-    int ariv_t;     // arrival time
-    int rema_t;     // remain time
-    int serv_t;     // service time
-    int turn_t;     // turnaround time
-    int resp_t;     // response time
-    int qlevel;     // queue level(=priority)
-    int ticket;     // ticket num
+    char p_name;    // Process name 
+    int ariv_t;     // Arrival time
+    int rema_t;     // Remain time
+    int serv_t;     // Service time
+    int turn_t;     // Turnaround time
+    int resp_t;     // Response time
+    int qlevel;     // Queue level(=priority)
+    int ticket;     // Ticket num
 } Process;
 
 /* Ready queue structure*/
 typedef struct{
-    Process **array; // queue buffer
-    int size;       // queue size
-    int count;      // count on ready process
-    int front;      // front index of queue
-	int rear;       // rear index of queue
+    Process **array;// Queue buffer
+    int size;       // Queue size
+    int count;      // Number of processes in the queue
+    int front;      // Front index of queue
+	int rear;       // Rear index of queue
 } ReadyQueue;
 
 /* Global variables */

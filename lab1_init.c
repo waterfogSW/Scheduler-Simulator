@@ -29,16 +29,13 @@
 
 int proc_num = 0;
 int total_time = 0;
-char *output;
 
 /* Initialize array of Process structure and output */
 void init () {
-
     parseInput();
     sortInput(task);
     setTotalTime();
-
-    output = (char*)malloc(sizeof(char)*total_time);
+    initReadyQueue(10);
 }
 
 /* Parse process information from input.txt file */
