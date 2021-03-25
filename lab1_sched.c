@@ -30,11 +30,12 @@
 
 void fcfs() {
     init();
+    initReadyQueue(10);
+    enqueue(&task[0]);
+    enqueue(&task[1]);
+    enqueue(&task[2]);
 
-    ReadyQueue *rq = initReadyQueue(Q_BUF);
-
-    enqueue(rq,&task[0]);
-
+    printQueue();
     // int next_idx = 0;
     // Process *sched_task = &task[next_idx++];
     // for (int time = 0; time < total_time; time++) {
@@ -42,10 +43,6 @@ void fcfs() {
 
     //     }
     // }
-    
-    
-    
-    printOutput();
 }
 
 void spn() {

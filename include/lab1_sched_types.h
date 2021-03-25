@@ -42,14 +42,14 @@ typedef struct{
 extern int proc_num;        // number of process
 extern int total_time;      // total execution time
 Process task[MAX_PROC_NUM]; // task arrays
-ReadyQueue *q;              // ready queue
+ReadyQueue rq;              // ready queue
 
 /* lab1_ready_q.c : Ready Queue functions*/
-ReadyQueue *initReadyQueue(unsigned size);
-void enqueue(ReadyQueue * queue, Process *item);
-Process *dequeue(ReadyQueue * queue);
-Process *getFront(ReadyQueue * queue);
-void printQueue(ReadyQueue * queue);
+void initReadyQueue(unsigned size);
+void enqueue(Process *item);
+Process *dequeue();
+Process *getFront();
+void printQueue();
 
 /* lab1_init.c : Process initialize functions */
 void init();            // initialize process

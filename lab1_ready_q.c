@@ -28,44 +28,45 @@
 #include <limits.h>
 #include "lab1_sched_types.h"
 
-ReadyQueue *initReadyQueue(unsigned size){
-	ReadyQueue *temp = (ReadyQueue *)malloc(sizeof(ReadyQueue));
-	temp->rear = size-1;
-	temp->front = size-1;
-    temp->count = 0;
-	temp->size = size;
-	temp->array = (Process **)malloc(size * sizeof(Process *));
-	return temp;
+ReadyQueue rq;
+
+void initReadyQueue(unsigned size){
+	rq.rear = size-1;
+	rq.front = size-1;
+    rq.count = 0;
+	rq.size = size;
+	rq.array = (Process **)malloc(size * sizeof(Process *));
 }
 
-void enqueue(ReadyQueue * queue, Process *item){
-	queue->rear = (queue->rear + 1) % queue->size;
-	if(queue->rear == queue->front){
-		queue->rear--;
+void enqueue(Process *item){
+	rq.rear = (rq.rear + 1) % rq.size;
+	if(rq.rear == rq.front){
+		rq.rear--;
 	}else{
-		queue->array[queue->rear] = item;	
+		rq.array[rq.rear] = item;	
 	}
-    queue->count++;
+    rq.count++;
 }
 
-Process *dequeue(ReadyQueue * queue){
-	if(queue->front == queue->rear ){
+Process *dequeue(){
+	if(rq.front == rq.rear){
 		return NULL;
 	}
-	queue->front = (queue->front + 1) % queue->size;
-    queue->count--;
-	return queue->array[queue->front];
+	rq.front = (rq.front + 1) % rq.size;
+    rq.count--;
+	return rq.array[rq.front];
 }
 
-Process *getFront(ReadyQueue * queue) {
-    int i = (queue->front + 1) % queue->size;
-    return queue->array[i];
+Process *getFront() {
+    int i = (rq.front + 1) % rq.size;
+    return rq.array[i];
 }
 
-void printQueue(ReadyQueue * queue) {
+void printQueue() {
     printf("Queue : ");
-    for (int i = 0; i < queue->size; i++)
+    for (int i = 1; i <= rq.count; i++)
     {
-        printf("%c ", queue->array[queue->front+i]->p_name);
+		int index = (rq.front + i) % rq.size;
+        printf("%c ", rq.array[index]->p_name);
     }
 }
