@@ -29,7 +29,6 @@
 
 int proc_num = 0;
 int total_time = 0;
-char *output;
 
 /* Initialize array of Process structure and output */
 void init () {
@@ -40,7 +39,6 @@ void init () {
 }
 
 void fin () {
-    free(output);
 }
 
 /* Parse process information from input.txt file */
@@ -112,6 +110,8 @@ void setTotalTime() {
     total_time = sum;
 }
 
-void initOutput() {
-    output = (char*)malloc(sizeof(char)*total_time);
+void setTimeQ(int q){
+    for (int i = 0; i < proc_num; i++) {
+        task[i].time_q = q;
+    }
 }

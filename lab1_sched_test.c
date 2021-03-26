@@ -32,8 +32,8 @@ int main(int argc, char *argv[]){
 
     fcfs();
     spn();
-    // rr(1);
-    // rr(4);
+    rr(1);
+    rr(4);
     // mlfq_1();
     // mlfq_2();
     // lott();

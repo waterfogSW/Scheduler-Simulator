@@ -25,6 +25,7 @@ typedef struct {
     int serv_t;     // Service time
     int turn_t;     // Turnaround time
     int resp_t;     // Response time
+    int time_q;     // time quatum
     int qlevel;     // Queue level(=priority)
     int ticket;     // Ticket num
 } Process;
@@ -57,6 +58,7 @@ void fin();             // finialization
 void parseInput();      // parse from input.txt file
 void sortInput();       // sort task by arrival time
 void setTotalTime();    // set Totaltime variable by sum of tasks service time
+void setTimeQ(int);     // set time quantum
 
 /* lab1_io.c : task io functions */
 void printQueue();

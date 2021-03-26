@@ -53,6 +53,7 @@ void sortbyServ() {
 
 void run(Process *run) {
     run->rema_t--;
+    run->time_q--;
 }
 
 void swap(Process *a, Process *b) {
