@@ -33,6 +33,7 @@ void printQueue() {
 		int index = (rq.front + i) % rq.size;
         printf("%c ", rq.array[index]->p_name);
     }
+    printf("\n");
 }
 
 void printProcInfo(){

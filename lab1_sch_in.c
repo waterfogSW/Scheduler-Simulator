@@ -35,28 +35,28 @@ void sortbyServ() {
     int serv_tmp2;
     int *idx = (int*)malloc(sizeof(int)*rq.count);
 
-    printf("count : %d | ",rq.count);
     for (int i = 0; i < rq.count; i++) {
         idx[i] = (rq.front + i + 1) % rq.size;
-        printf("%d : %c %d |", i,rq.array[idx[i]]->p_name, rq.array[idx[i]]->serv_t);
     }
-    printf("\n");
-    
 
-    // for (int i = rq.count - 1; i > 0; i++) {
-    //     for (int j = 0; j < i; j++) {
-    //         serv_tmp1 = rq.array[idx[j]]->serv_t;
-    //         serv_tmp2 = rq.array[idx[j+1]]->serv_t;
-    //         if(serv_tmp1 > serv_tmp2) {
-    //             tmp = rq.array[idx[j]];
-    //             rq.array[idx[j+1]] = rq.array[idx[j]];
-    //             rq.array[idx[j]] = tmp;
-    //         }
-    //     }    
-    // }
+    for (int i = rq.count - 1; i > 0; i--) {
+        for (int j = 0; j < i; j++) {
+            serv_tmp1 = rq.array[idx[j]]->serv_t;
+            serv_tmp2 = rq.array[idx[j+1]]->serv_t;
+            if(serv_tmp1 > serv_tmp2) {
+                swap(rq.array[idx[j]],rq.array[idx[j+1]]);
+            }
+        }    
+    }
     free(idx);
 }
 
 void run(Process *run) {
     run->rema_t--;
+}
+
+void swap(Process *a, Process *b) {
+    Process tmp = *a;
+    *a = *b;
+    *b = tmp;
 }

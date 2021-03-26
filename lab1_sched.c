@@ -40,9 +40,7 @@ void fcfs() {
             enqueue(&task[next_idx++]);
         }
         output[cpu_time] = cur->p_name;
-
         run(cur);
-
         if(cur->rema_t == 0) {
             cur = dequeue();
         }
@@ -65,11 +63,11 @@ void spn() {
         while (next_idx < proc_num && task[next_idx].ariv_t == cpu_time) {
             enqueue(&task[next_idx++]);
         }
+        sortbyServ();
         output[cpu_time] = cur->p_name;
         run(cur);
         if(cur->rema_t == 0) {
             cur = dequeue();
-            sortbyServ();
         }
         cpu_time++;
     }
@@ -81,6 +79,16 @@ void spn() {
 
 void rr(int q) {
     init();
+    char output[total_time];
+    int next_idx = 0;
+    int cpu_time = 0;
+    
+    while (cpu_time < total_time) {
+        /* code */
+    }
+    
+
+    fin();
 }
 
 void mlfq_1() {
