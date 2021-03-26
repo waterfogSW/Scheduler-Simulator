@@ -46,10 +46,10 @@ Process task[MAX_PROC_NUM]; // task arrays
 ReadyQueue rq;              // ready queue
 
 /* lab1_ready_q.c : Ready Queue functions*/
-void initReadyQueue(unsigned size);
-void enqueue(Process *item);
-Process *dequeue();
-Process *getFront();
+void initReadyQueue(unsigned size);     // initialize ready queue
+void enqueue(Process *item);            // push item to ready queue
+Process *dequeue();                     // pop item from ready queue
+Process *getFront();                    // get first process of ready queue
 
 /* lab1_init.c : Process initialize functions */
 void init();            // initialize process

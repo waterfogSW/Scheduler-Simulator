@@ -32,7 +32,6 @@ void fcfs() {
     init();
     char output[total_time];
     int next_idx = 0;
-    int complete = 0;
     int cpu_time = 0;
 
     Process *cur= &task[next_idx++];
@@ -46,12 +45,11 @@ void fcfs() {
 
         if(cur->rema_t == 0) {
             cur = dequeue();
-            complete++;
         }
         cpu_time++;
     }
 
-    printf("fcfs: ");
+    printf("fcfs    : ");
     printOutput(output);
     fin();
 }
@@ -60,7 +58,6 @@ void spn() {
     init();
     char output[total_time];
     int next_idx = 0;
-    int complete = 0;
     int cpu_time = 0;
 
     Process *cur= &task[next_idx++];
@@ -74,12 +71,11 @@ void spn() {
 
         if(cur->rema_t == 0) {
             cur = dequeue();
-            complete++;
         }
         cpu_time++;
     }
 
-    printf("fcfs: ");
+    printf("spn     : ");
     printOutput(output);
     fin();
 }
