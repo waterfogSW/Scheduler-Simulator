@@ -29,8 +29,7 @@
 
 void printQueue() {
     printf("Queue : ");
-    for (int i = 1; i <= rq.count; i++)
-    {
+    for (int i = 1; i <= rq.count; i++) {
 		int index = (rq.front + i) % rq.size;
         printf("%c ", rq.array[index]->p_name);
     }

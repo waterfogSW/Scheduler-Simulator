@@ -66,11 +66,10 @@ void spn() {
             enqueue(&task[next_idx++]);
         }
         output[cpu_time] = cur->p_name;
-        
         run(cur);
-
         if(cur->rema_t == 0) {
             cur = dequeue();
+            sortbyServ();
         }
         cpu_time++;
     }
