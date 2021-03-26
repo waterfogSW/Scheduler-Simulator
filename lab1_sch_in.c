@@ -51,6 +51,29 @@ void sortbyServ() {
     free(idx);
 }
 
+void sortbylevel() {
+    Process *tmp;
+    Process *tmp_arr[rq.count+1];
+    int next = 1;
+    int index = 0;
+    while (next <= rq.count){
+        for (int i = 0; i < MAX_LEVEL; i++) {
+            for (int j = 1; j <= rq.count; j++) {
+		        index = (rq.front + j) % rq.size;
+                if(i == rq.array[index]->qlevel) {
+                    tmp_arr[next++] = rq.array[index];
+                }
+            }
+        }
+    }
+
+    for (int i = 1; i <= rq.count; i++) {
+        index = (rq.front + i) % rq.size;
+        rq.array[index] = tmp_arr[i];
+    }
+    
+}
+
 void run(Process *run) {
     run->rema_t--;
     run->time_q--;

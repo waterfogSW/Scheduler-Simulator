@@ -127,12 +127,15 @@ void mlfq_1() {
         }
         if(flag == 1) {
             enqueue(tmp);
+            sortbylevel();
             cur = dequeue();
             flag = 0;
         }
+        if(rq.count > 0) cur->qlevel++;
         output[cpu_time] = cur->p_name;
         run(cur);
         if(cur->rema_t <= 0) {
+            sortbylevel();
             cur = dequeue();
         } else if(cur->time_q <= 0) {
             tmp = cur;

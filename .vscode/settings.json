@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "typeinfo": "c",
-        "aio.h": "c"
+        "aio.h": "c",
+        "stat.h": "c"
     }
 }

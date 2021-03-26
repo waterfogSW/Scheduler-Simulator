@@ -13,9 +13,10 @@
 #ifndef _LAB1_HEADER_H
 #define _LAB1_HEADER_H
 
-#define Q_BUF 10                // Define buffer size of ready queue
-#define MAX_PROC_NUM 10         // Define MAX process number
-#define FILE_NAME "./input.txt" // Define parsing file name(path)
+#define Q_BUF 10                // Buffer size of ready queue
+#define MAX_LEVEL 10            // MAX priority level
+#define MAX_PROC_NUM 10         // MAX process number
+#define FILE_NAME "./input.txt" // Input file name(path)
 
 /* Process structure*/
 typedef struct {
@@ -75,6 +76,7 @@ void lott();	        // implement at lottery.c
 
 /* lab1_sch_in.c : Scheduler inner functions */
 void sortbyServ();      // Sort ready queue by service time
+void sortbylevel();     // Sort ready queue by priority level
 void run(Process *);    // Run task 
 void swap(Process *, Process *);
 
