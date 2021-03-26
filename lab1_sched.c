@@ -35,29 +35,53 @@ void fcfs() {
     int complete = 0;
     int cpu_time = 0;
 
-    Process *run= &task[next_idx++];
+    Process *cur= &task[next_idx++];
+    while (cpu_time < total_time) {
+        while (next_idx < proc_num && task[next_idx].ariv_t == cpu_time) {
+            enqueue(&task[next_idx++]);
+        }
+        output[cpu_time] = cur->p_name;
 
-    while(complete < proc_num){
-	// arrival time same service time than next task put queue
-		while(next_idx<proc_num && task[next_idx].ariv_t == cpu_time){
-			enqueue(&task[next_idx]);
-			next_idx++;
-		}
-		printf("%c ",run->p_name);	// now process name print
-		output[cpu_time] = run->p_name;	// store present process name put for print table
+        run(cur);
 
-		cpu_time++;		// service time increament
-		if(--run->rema_t <= 0){	// task kill and next task pop
-			complete++;
-			run->turn_t = cpu_time - run->ariv_t;
-			run = dequeue();
-		}
-	}
+        if(cur->rema_t == 0) {
+            cur = dequeue();
+            complete++;
+        }
+        cpu_time++;
+    }
+
+    printf("fcfs: ");
+    printOutput(output);
     fin();
 }
 
 void spn() {
     init();
+    char output[total_time];
+    int next_idx = 0;
+    int complete = 0;
+    int cpu_time = 0;
+
+    Process *cur= &task[next_idx++];
+    while (cpu_time < total_time) {
+        while (next_idx < proc_num && task[next_idx].ariv_t == cpu_time) {
+            enqueue(&task[next_idx++]);
+        }
+        output[cpu_time] = cur->p_name;
+        
+        run(cur);
+
+        if(cur->rema_t == 0) {
+            cur = dequeue();
+            complete++;
+        }
+        cpu_time++;
+    }
+
+    printf("fcfs: ");
+    printOutput(output);
+    fin();
 }
 
 void rr(int q) {

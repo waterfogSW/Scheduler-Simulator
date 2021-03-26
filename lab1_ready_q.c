@@ -61,12 +61,3 @@ Process *getFront() {
     int i = (rq.front + 1) % rq.size;
     return rq.array[i];
 }
-
-void printQueue() {
-    printf("Queue : ");
-    for (int i = 1; i <= rq.count; i++)
-    {
-		int index = (rq.front + i) % rq.size;
-        printf("%c ", rq.array[index]->p_name);
-    }
-}

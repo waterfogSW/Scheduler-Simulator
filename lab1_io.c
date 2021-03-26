@@ -27,7 +27,14 @@
 
 #include "lab1_sched_types.h"
 
-char *output;
+void printQueue() {
+    printf("Queue : ");
+    for (int i = 1; i <= rq.count; i++)
+    {
+		int index = (rq.front + i) % rq.size;
+        printf("%c ", rq.array[index]->p_name);
+    }
+}
 
 void printProcInfo(){
     for (int i = 0; i < proc_num; i++) {
@@ -37,8 +44,9 @@ void printProcInfo(){
     printf("Total  time : %d\n", total_time);
 }
 
-void printOutput(){
+void printOutput(char* output){
     for (int i = 0; i < total_time; i++){
         printf("%c ", output[i]);
     }
+    printf("\n");
 }

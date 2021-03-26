@@ -29,6 +29,7 @@
 
 int proc_num = 0;
 int total_time = 0;
+char *output;
 
 /* Initialize array of Process structure and output */
 void init () {
@@ -39,7 +40,7 @@ void init () {
 }
 
 void fin () {
-    free(&rq);
+    free(output);
 }
 
 /* Parse process information from input.txt file */
@@ -66,7 +67,7 @@ void parseInput () {
         /* Initialize process struct */
         task[line_num].p_name = pid_p;
         task[line_num].ariv_t = ariv_p;
-        task[line_num].rema_t = ariv_p;
+        task[line_num].rema_t = serv_p;
         task[line_num].serv_t = serv_p;
         task[line_num].turn_t = -1;
         task[line_num].resp_t = -1;
@@ -109,4 +110,8 @@ void setTotalTime() {
         sum += task[i].serv_t;
     }
     total_time = sum;
+}
+
+void initOutput() {
+    output = (char*)malloc(sizeof(char)*total_time);
 }

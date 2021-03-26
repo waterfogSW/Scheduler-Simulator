@@ -31,16 +31,17 @@ typedef struct {
 
 /* Ready queue structure*/
 typedef struct{
-    Process **array;// Queue buffer
-    int size;       // Queue size
-    int count;      // Number of processes in the queue
-    int front;      // Front index of queue
-	int rear;       // Rear index of queue
+    Process **array;    // Queue buffer
+    int size;           // Queue size
+    int count;          // Number of processes in the queue
+    int front;          // Front index of queue
+	int rear;           // Rear index of queue
 } ReadyQueue;
 
 /* Global variables */
-extern int proc_num;        // number of process
-extern int total_time;      // total execution time
+int proc_num;               // number of process
+int total_time;             // total execution time
+char *output;               // record running process
 Process task[MAX_PROC_NUM]; // task arrays
 ReadyQueue rq;              // ready queue
 
@@ -49,7 +50,6 @@ void initReadyQueue(unsigned size);
 void enqueue(Process *item);
 Process *dequeue();
 Process *getFront();
-void printQueue();
 
 /* lab1_init.c : Process initialize functions */
 void init();            // initialize process
@@ -59,15 +59,20 @@ void sortInput();       // sort task by arrival time
 void setTotalTime();    // set Totaltime variable by sum of tasks service time
 
 /* lab1_io.c : task io functions */
+void printQueue();
 void printProcInfo();
-void printOutput();
+void printOutput(char *);
 
 /* lab1_sched.c : Scheduler functions */
 void fcfs();		// FCFS : first come first serve
 void spn();		    // SPN  : shortest process next
 void rr(int q);	    // RR   : round robin
 void mlfq_1();		// MLFQ : multi level feedback queue (q = 1)
-void mlfq_2();		// MLFQ : multi level feedback queue (q = 2^i)
+void mlfq_2();		// MLFQ : multi lesvel feedback queue (q = 2^i)
 void lott();	    // implement at lottery.c
+
+/* lab1_sch_in.c : Scheduler inner functions */
+void sortbyServ();  // Sort ready queue by service time
+void run(Process *);// Run task 
 
 #endif /* LAB1_HEADER_H*/
