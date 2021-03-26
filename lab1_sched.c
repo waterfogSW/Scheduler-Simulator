@@ -1,8 +1,8 @@
 /*
 *	DKU Operating System Lab
 *	    Lab1 (Scheduler Algorithm Simulator)
-*	    Student id : 
-*	    Student name : 
+*	    Student id : 32170578
+*	    Student name : 김산
 *
 *   lab1_sched.c :
 *       - Lab1 source file.
@@ -47,7 +47,7 @@ void fcfs() {
         cpu_time++;
     }
 
-    printf("fcfs    : ");
+    printf("fcfs        : ");
     printOutput(output);
     fin();
 }
@@ -71,8 +71,7 @@ void spn() {
         }
         cpu_time++;
     }
-
-    printf("spn     : ");
+    printf("spn         : ");
     printOutput(output);
     fin();
 }
@@ -107,17 +106,79 @@ void rr(int q) {
         }
         cpu_time++;
     }
-    printf("rr(q=%d) : ", q);
+    printf("rr(q=%d)     : ", q);
     printOutput(output);
     fin();
 }
 
 void mlfq_1() {
+    init();
+    char output[total_time];
+    int next_idx = 0;
+    int cpu_time = 0;
+    int flag = 0;
+    Process *cur= &task[next_idx++];
+    Process *tmp;
+    setTimeQ(1);
 
+    while (cpu_time < total_time) {
+        while (next_idx < proc_num && task[next_idx].ariv_t == cpu_time) {
+            enqueue(&task[next_idx++]);
+        }
+        if(flag == 1) {
+            enqueue(tmp);
+            cur = dequeue();
+            flag = 0;
+        }
+        output[cpu_time] = cur->p_name;
+        run(cur);
+        if(cur->rema_t <= 0) {
+            cur = dequeue();
+        } else if(cur->time_q <= 0) {
+            tmp = cur;
+            tmp->time_q = 1;
+            flag = 1;
+        }
+        cpu_time++;
+    }
+    printf("mlfq(q=1)   : ");
+    printOutput(output);
+    fin();
 }
 
 void mlfq_2() {
+    init();
+    char output[total_time];
+    int next_idx = 0;
+    int cpu_time = 0;
+    int flag = 0;
+    Process *cur= &task[next_idx++];
+    Process *tmp;
+    setTimeQ(1);
 
+    while (cpu_time < total_time) {
+        while (next_idx < proc_num && task[next_idx].ariv_t == cpu_time) {
+            enqueue(&task[next_idx++]);
+        }
+        if(flag == 1) {
+            enqueue(tmp);
+            cur = dequeue();
+            flag = 0;
+        }
+        output[cpu_time] = cur->p_name;
+        run(cur);
+        if(cur->rema_t <= 0) {
+            cur = dequeue();
+        } else if(cur->time_q <= 0) {
+            tmp = cur;
+            tmp->time_q = 1;
+            flag = 1;
+        }
+        cpu_time++;
+    }
+    printf("mlfq(q=2ⁱ)  : ");
+    printOutput(output);
+    fin();
 }
 
 void lott() {

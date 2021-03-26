@@ -1,8 +1,8 @@
 /*
 *	DKU Operating System Lab
 *	    Lab1 (Scheduler Algorithm Simulator)
-*	    Student id : 
-*	    Student name : 
+*	    Student id : 32170578
+*	    Student name : 김산
 *
 *   lab1_sched.c :
 *       - Lab1 source file.
@@ -34,8 +34,8 @@ int main(int argc, char *argv[]){
     spn();
     rr(1);
     rr(4);
-    // mlfq_1();
-    // mlfq_2();
+    mlfq_1();
+    mlfq_2();
     // lott();
 }
 

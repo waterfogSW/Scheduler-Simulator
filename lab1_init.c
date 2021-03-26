@@ -1,8 +1,8 @@
 /*
 *	DKU Operating System Lab
 *	    Lab1 (Scheduler Algorithm Simulator)
-*	    Student id : 
-*	    Student name : 
+*	    Student id : 32170578
+*	    Student name : 김산
 *
 *   lab1_init.c :
 *       - Lab1 initialize function implementations
