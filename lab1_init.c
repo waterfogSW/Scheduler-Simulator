@@ -38,6 +38,10 @@ void init () {
     initReadyQueue(10);
 }
 
+void fin () {
+    free(&rq);
+}
+
 /* Parse process information from input.txt file */
 void parseInput () {
     FILE *fp;           // file pointer

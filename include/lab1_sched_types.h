@@ -53,6 +53,7 @@ void printQueue();
 
 /* lab1_init.c : Process initialize functions */
 void init();            // initialize process
+void fin();             // finialization
 void parseInput();      // parse from input.txt file
 void sortInput();       // sort task by arrival time
 void setTotalTime();    // set Totaltime variable by sum of tasks service time
