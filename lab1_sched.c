@@ -30,14 +30,29 @@
 
 void fcfs() {
     init();
-    // int next_idx = 0;
-    // Process *sched_task = &task[next_idx++];
-    // for (int time = 0; time < total_time; time++) {
-    //     while(next_idx<proc_num && task[next_idx].ariv_t == time) {
+    char output[total_time];
+    int next_idx = 0;
+    int complete = 0;
+    int cpu_time = 0;
 
-    //     }
-    // }
+    Process *run= &task[next_idx++];
 
+    while(complete < proc_num){
+	// arrival time same service time than next task put queue
+		while(next_idx<proc_num && task[next_idx].ariv_t == cpu_time){
+			enqueue(&task[next_idx]);
+			next_idx++;
+		}
+		printf("%c ",run->p_name);	// now process name print
+		output[cpu_time] = run->p_name;	// store present process name put for print table
+
+		cpu_time++;		// service time increament
+		if(--run->rema_t <= 0){	// task kill and next task pop
+			complete++;
+			run->turn_t = cpu_time - run->ariv_t;
+			run = dequeue();
+		}
+	}
     fin();
 }
 
