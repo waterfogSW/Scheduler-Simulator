@@ -49,7 +49,8 @@ ReadyQueue rq;              // ready queue
 
 /* lab1_ready_q.c : Ready Queue functions*/
 void initReadyQueue(unsigned size);     // initialize ready queue
-void enqueue(Process *item);            // push item to ready queue
+void del_data(Process *);               // delete data from queue
+void enqueue(Process *);                // push item to ready queue
 Process *dequeue();                     // pop item from ready queue
 Process *getFront();                    // get first process of ready queue
 
@@ -75,9 +76,14 @@ void mlfq_2();		    // MLFQ : multi lesvel feedback queue (q = 2^i)
 void lott();	        // implement at lottery.c
 
 /* lab1_sch_in.c : Scheduler inner functions */
-void sortbyServ();      // Sort ready queue by service time
-void sortbylevel();     // Sort ready queue by priority level
-void run(Process *);    // Run task 
-void swap(Process *, Process *);
+int pow_2(int, int);            // Get power of first argument
+int getTotaltickets();          // Get total tickets of current ready queue
+int get_random();               // Get random number from a to b
+void sortbyServ();              // Sort ready queue by service time
+void sortbylevel();             // Sort ready queue by priority level
+void promote(Process *,int);    // Promote priority level (1: q = 1, 2: q = 2^i)
+void run(Process *);            // Run task 
+void swap(Process *, Process *);// Swap Process
+Process* get_winner();          // Get winner index at lottery scheduling
 
 #endif /* LAB1_HEADER_H*/

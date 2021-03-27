@@ -38,6 +38,17 @@ void initReadyQueue(unsigned size){
 	rq.array = (Process **)malloc(size * sizeof(Process *));
 }
 
+void del_data(Process *p) {
+	int count = rq.count;
+	Process *tmp;
+	for (int i = 0; i < count; i++){
+		tmp = dequeue();
+		if(tmp != p){
+			enqueue(tmp);
+		}
+	}
+}
+
 void enqueue(Process *item){
 	rq.rear = (rq.rear + 1) % rq.size;
 	if(rq.rear == rq.front){

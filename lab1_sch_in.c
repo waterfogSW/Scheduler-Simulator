@@ -28,6 +28,51 @@
 
 #include "lab1_sched_types.h"
 
+/* get power of first argument */
+int pow_2(int base, int exp) {
+    int res = 1; 
+    if(exp == 0) return 1;
+    while (exp) { 
+        if (exp & 1) res *= base; 
+        exp >>= 1; 
+        base *= base; 
+    }
+    return res;
+}
+
+/* Get total tickets of current ready queue*/
+int getTotaltickets(){
+    int total = 0;
+    for (int i = 1; i <= rq.count; i++) {
+		int index = (rq.front + i) % rq.size;
+        total += rq.array[index]->ticket;
+    }
+    return total;
+}
+
+/* Get random number from a to b*/
+int get_random() {
+    int random;
+    int total = getTotaltickets();
+    if(total == 0) return 0;
+    random = rand() % total;
+    return random;
+}
+
+/* Get winner process at lottery scheduling */
+Process* get_winner() {
+    int counter = 0;
+    int index = 0;
+    int winner = get_random();
+    for (int i = 1; i <= rq.count; i++) {
+        index = (rq.front + i) % rq.size;
+        counter += rq.array[index]->ticket;
+        if(counter > winner) {
+            return rq.array[index];
+        }
+    }
+}
+
 /* Sort ready queue by service time */
 void sortbyServ() {
     Process *tmp;
@@ -74,6 +119,24 @@ void sortbylevel() {
     
 }
 
+/* promote current running task (1: q = 1, 2: q = 2^i)*/
+void promote(Process *p, int i) {
+    Process *tmp = p;
+    p->qlevel++;
+    switch (i) {
+    case 1:
+        p->time_q = 1;
+        break;
+    case 2:
+        p->time_q = pow_2(2, p->qlevel);
+        break;
+    default:
+        printf("promote option error");
+        return;
+    }
+}
+
+/* run process */
 void run(Process *run) {
     run->rema_t--;
     run->time_q--;

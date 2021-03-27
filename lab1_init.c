@@ -36,6 +36,7 @@ void init () {
     sortInput(task);
     setTotalTime();
     initReadyQueue(10);
+    srand(time(NULL));
 }
 
 void fin () {
@@ -70,7 +71,7 @@ void parseInput () {
         task[line_num].turn_t = -1;
         task[line_num].resp_t = -1;
         task[line_num].qlevel = 0;
-        task[line_num].ticket = serv_p * 100;
+        task[line_num].ticket = 100;
 
         line_num += 1;
 
