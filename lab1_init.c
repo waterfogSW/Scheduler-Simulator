@@ -39,9 +39,6 @@ void init () {
     srand(time(NULL));
 }
 
-void fin () {
-}
-
 /* Parse process information from input.txt file */
 void parseInput () {
     FILE *fp;           // file pointer
@@ -103,6 +100,7 @@ void sortInput(Process *p){
     }
 }
 
+/* set total time global variable */
 void setTotalTime() {
     int sum = 0;
     for (int i = 0; i < proc_num; i++) {
@@ -111,6 +109,7 @@ void setTotalTime() {
     total_time = sum;
 }
 
+/* set time quantum of all tasks */
 void setTimeQ(int q){
     for (int i = 0; i < proc_num; i++) {
         task[i].time_q = q;

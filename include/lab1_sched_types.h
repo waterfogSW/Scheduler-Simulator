@@ -56,13 +56,12 @@ Process *getFront();                    // get first process of ready queue
 
 /* lab1_init.c : Process initialize functions */
 void init();            // initialize process
-void fin();             // finialization
 void parseInput();      // parse from input.txt file
 void sortInput();       // sort task by arrival time
 void setTotalTime();    // set Totaltime variable by sum of tasks service time
 void setTimeQ(int);     // set time quantum
 
-/* lab1_io.c : task io functions */
+/* lab1_io.c : io functions */
 void printQueue();
 void printProcInfo();
 void printOutput(char *);

@@ -30,11 +30,10 @@
 
 /* get power of first argument */
 int pow_2(int exp) {
-    int res = 0;
-    for (int i = 0; i < exp; i++){
+    int res = 1;
+    for (int i = 0; i < exp; i++) {
         res *= 2;
     }
-    
     return res;
 }
 
