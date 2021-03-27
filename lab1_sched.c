@@ -214,24 +214,3 @@ void lott() {
     printOutput(output);
     fin();
 }
-
-// A 0 Queue :         A 0 Queue : 
-// A 0 Queue :         A 0 Queue :     
-// B 0 Queue : A       B 0 Queue : A1 
-// A 1 Queue : B       A 1 Queue : B1 
-// C 0 Queue : B       C 0 Queue : B1    
-// B 2 Queue : C       B 2 Queue : C1
-// C 1 Queue : D B     D 0 Queue : C1 B2     
-// D 0 Queue : B C     C 1 Queue : B2 D1     
-// B 3 Queue : C E D   E 0 Queue : D1 B2 C2     
-// C 2 Queue : E D B   D 1 Queue : C2 B2 E1     
-// E 0 Queue : D B C   E 1 Queue : C2 B2 D2     
-// D 1 Queue : B C E   D 2 Queue : B2 C2     
-// B 4 Queue : C E D   B 3 Queue : C D             
-// C 3 Queue : E D B   C 3 Queue : D B     
-// D 2 Queue : B E     D 3 Queue : B C                     
-// B 5 Queue : E D     B 4 Queue : C D 
-// E 2 Queue : D B     C 4 Queue : D B     
-// B 6 Queue : D       B 5 Queue : D         
-// D 4 Queue :         D 5 Queue : B 
-// D 4 Queue :         B 6 Queue :  

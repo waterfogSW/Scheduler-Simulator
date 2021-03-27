@@ -68,8 +68,8 @@ void printProcInfo();
 void printOutput(char *);
 
 /* lab1_sched.c : Scheduler functions */
-void fcfs();		    // FCFS : first come first serve
-void spn();		        // SPN  : shortest process next
+void fcfs();            // FCFS : first come first serve
+void spn();             // SPN  : shortest process next
 void rr(int q);	        // RR   : round robin
 void mlfq_1();		    // MLFQ : multi level feedback queue (q = 1)
 void mlfq_2();		    // MLFQ : multi lesvel feedback queue (q = 2^i)
