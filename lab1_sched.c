@@ -115,7 +115,6 @@ void mlfq_1() {
     int cpu_time = 0;
     int flag = 0;
     Process *cur= &task[next_idx++];
-    Process *tmp;
     setTimeQ(1);
 
     while (cpu_time < total_time) {
@@ -123,21 +122,24 @@ void mlfq_1() {
             enqueue(&task[next_idx++]);
         }
         if(flag == 1) {
-            if (rq.count != 0) {
-                cur->qlevel++;
-                cur->time_q = 1;
-                tmp = cur;
+            if (rq.count > 0) {
+                promote(cur,1);
+                enqueue(cur);
                 sortbylevel();
                 cur = dequeue();
-                enqueue(tmp);
             } else {
                 cur->time_q = 1;
             }
+            flag = 0;
+        }
+        if(flag == 2) {
+            sortbylevel();
+            cur = dequeue();
         }
         output[cpu_time] = cur->p_name;
         run(cur);
         if(cur->rema_t == 0) {
-            cur = dequeue();
+            flag = 2;
         } else if (cur->time_q == 0) {
             flag = 1;
         }
@@ -154,23 +156,39 @@ void mlfq_2() {
     int next_idx = 0;
     int cpu_time = 0;
     int flag = 0;
-    Process *cur = &task[next_idx++];
-    Process *tmp;
+    Process *cur= &task[next_idx++];
     setTimeQ(1);
 
     while (cpu_time < total_time) {
         while (next_idx < proc_num && task[next_idx].ariv_t == cpu_time) {
             enqueue(&task[next_idx++]);
         }
-        cur->qlevel++;
-        if(--cur->rema_t > 0) {
-            enqueue(cur);
-			sortbylevel();
+        if(flag == 1) {
+            if (rq.count > 0) {
+                promote(cur,2);
+                enqueue(cur);
+                sortbylevel();
+                cur = dequeue();
+            } else {
+                cur->time_q = pow_2(cur->qlevel);
+            }
+            flag = 0;
+        }
+        if(flag == 2) {
+            sortbylevel();
+            cur = dequeue();
+        }
+        output[cpu_time] = cur->p_name;
+        run(cur);
+        if(cur->rema_t == 0) {
+            flag = 2;
+        } else if (cur->time_q == 0) {
+            flag = 1;
         }
         cpu_time++;
     }
-    printf("mlfq(q=2)   : ");
-    printf("\n");
+    printf("mlfq(q=1)   : ");
+    printOutput(output);
     fin();
 }
 

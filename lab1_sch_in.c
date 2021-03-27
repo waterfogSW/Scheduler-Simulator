@@ -29,14 +29,12 @@
 #include "lab1_sched_types.h"
 
 /* get power of first argument */
-int pow_2(int base, int exp) {
-    int res = 1; 
-    if(exp == 0) return 1;
-    while (exp) { 
-        if (exp & 1) res *= base; 
-        exp >>= 1; 
-        base *= base; 
+int pow_2(int exp) {
+    int res = 0;
+    for (int i = 0; i < exp; i++){
+        res *= 2;
     }
+    
     return res;
 }
 
@@ -128,7 +126,7 @@ void promote(Process *p, int i) {
         p->time_q = 1;
         break;
     case 2:
-        p->time_q = pow_2(2, p->qlevel);
+        p->time_q = pow_2(p->qlevel);
         break;
     default:
         printf("promote option error");

@@ -76,7 +76,7 @@ void mlfq_2();		    // MLFQ : multi lesvel feedback queue (q = 2^i)
 void lott();	        // implement at lottery.c
 
 /* lab1_sch_in.c : Scheduler inner functions */
-int pow_2(int, int);            // Get power of first argument
+int pow_2(int);                 // Get power of first argument
 int getTotaltickets();          // Get total tickets of current ready queue
 int get_random();               // Get random number from a to b
 void sortbyServ();              // Sort ready queue by service time
