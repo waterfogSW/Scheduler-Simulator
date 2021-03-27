@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "typeinfo": "c",
-        "aio.h": "c",
-        "stat.h": "c",
-        "time.h": "c"
-    }
-}
