@@ -63,12 +63,12 @@ void spn() {
 
     Process *cur= &task[next_idx++];
     while (cpu_time < total_time) {
-        output[cpu_time++] = cur->p_name;
         while (next_idx < proc_num && task[next_idx].ariv_t == cpu_time) {
             enqueue(&task[next_idx++]);
         }
         /* sort ready queue by service time, to get shortest process next */
         sortbyServ();
+        output[cpu_time++] = cur->p_name;
         run(cur);
         if(cur->rema_t == 0) {
             cur = dequeue();
