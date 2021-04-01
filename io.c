@@ -14,7 +14,7 @@
 #include <pthread.h>
 #include <asm/unistd.h>
 
-#include "lab1_sched_types.h"
+#include "sched_types.h"
 
 void printQueue() {
     printf("Queue : ");

@@ -15,7 +15,7 @@
 #include <asm/unistd.h>
 
 #include <limits.h>
-#include "lab1_sched_types.h"
+#include "sched_types.h"
 
 ReadyQueue rq;
 

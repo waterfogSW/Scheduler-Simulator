@@ -14,7 +14,7 @@
 #include <pthread.h>
 #include <asm/unistd.h>
 
-#include "lab1_sched_types.h"
+#include "sched_types.h"
 
 int proc_num = 0;
 int total_time = 0;
