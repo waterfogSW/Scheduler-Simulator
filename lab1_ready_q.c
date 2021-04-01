@@ -1,14 +1,3 @@
-/*
-*	DKU Operating System Lab
-*	    Lab1 (Scheduler Algorithm Simulator)
-*	    Student id : 32170578
-*	    Student name : 김산
-*
-*   lab1_io.c :
-*       - Lab1 Ready queue function implementations
-*
-*/
-
 #include <aio.h>
 #include <stdio.h>
 #include <stdlib.h>
