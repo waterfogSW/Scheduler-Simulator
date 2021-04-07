@@ -15,7 +15,6 @@
 #include <asm/unistd.h>
 
 #include "sched_types.h"
-
 /* get power of first argument */
 int pow_2(int exp) {
     int res = 1;
