@@ -1,13 +1,3 @@
-#
-#	DKU Operating System Lab
-#	    Lab1 (Scheduler Algorithm Simulator)
-#	    Student id : 
-#	    Student name : 
-#
-#   Makfeile :
-#       - Makefile for lab1 compilation.
-#
-
 CC = gcc
 INC = -I${CURDIR}/include/
 CFLAGS = -g $(INC)
