@@ -1,0 +1,7 @@
+init.o
+io.o
+ready_q.o
+sch_in.o
+sched
+sched.o
+sched_test.o
