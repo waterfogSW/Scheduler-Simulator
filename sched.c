@@ -131,14 +131,13 @@ void mlfq_1() {
             cur = dequeue();
             flag = 0;
         }
-        output[cpu_time] = cur->p_name;
+        output[cpu_time++] = cur->p_name;
         run(cur);
         if(cur->rema_t <= 0) {
             flag = 2;
         } else if (cur->time_q <= 0) {
             flag = 1;
         }
-        cpu_time++;
     }
     printf("mlfq(q=1)   : ");
     printOutput(output);
@@ -173,14 +172,13 @@ void mlfq_2() {
             cur = dequeue();
             flag = 0;
         }
-        output[cpu_time] = cur->p_name;
+        output[cpu_time++] = cur->p_name;
         run(cur);
         if(cur->rema_t <= 0) {
             flag = 2;
         } else if (cur->time_q <= 0) {
             flag = 1;
         }
-        cpu_time++;
     }
     printf("mlfq(q=2)   : ");
     printOutput(output);
